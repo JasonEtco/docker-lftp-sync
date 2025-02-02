@@ -25,6 +25,16 @@ EOF
   echo "sync_dir() done"
 }
 
+mv_files() {
+  pushd /lftp-sync/synced
+  find . -type f | while read file; do
+    target="/lftp-sync/import/$file"
+    mkdir -p "$(dirname "$target")"
+    mv -n -v "$file" "$target"
+  done
+  popd
+}
+
 if [ -e /config/lftp-sync.lock ]; then
   echo "Sync is running already."
   exit 1
@@ -36,8 +46,9 @@ else
   sync_dir
   echo "Sync Done: $(date)"
 
-  echo "Mirroring import folder..."
-  rsync -a --delete /lftp-sync/synced/ /lftp-sync/import/
+  echo "Moving files starting: $(date)"
+  mv_files
+  echo "Moving files done: $(date)"
 
   rm -f /config/lftp-sync.lock
   exit 0

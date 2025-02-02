@@ -1,6 +1,6 @@
 FROM ghcr.io/linuxserver/baseimage-alpine:3.20-version-6315bc7d
 
-RUN apk add -U --upgrade --no-cache lftp openssh rsync
+RUN apk add -U --upgrade --no-cache lftp openssh
 
 ADD crontab /etc/cron.d/run-cron
 ADD scripts /var/scripts
