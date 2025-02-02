@@ -6,7 +6,7 @@ login=$LFTP_USER
 pass=$LFTP_PASSWORD
 host=sftp://$LFTP_HOST
 base_remote_dir=$LFTP_REMOTE_DIR
-base_local_dir=/synced
+base_local_dir=/lftp-sync/synced
 parallel=${LFTP_PARALLEL:-4}
 
 set -e
@@ -37,7 +37,7 @@ else
   echo "Sync Done: $(date)"
 
   echo "Mirroring import folder..."
-  rsync -a --delete /synced/ /import/
+  rsync -a --delete /lftp-sync/synced/ /lftp-sync/import/
 
   rm -f /config/lftp-sync.lock
   exit 0
