@@ -36,6 +36,9 @@ else
   sync_dir
   echo "Sync Done: $(date)"
 
+  echo "Mirroring import folder..."
+  rsync -a --delete /synced/ /import/
+
   rm -f /config/lftp-sync.lock
   exit 0
 fi
