@@ -57,7 +57,7 @@ jobs:
 
       - name: Generate deployment summary
         run: |
-          echo "## 🍹 Drinks Container" >> $GITHUB_STEP_SUMMARY
+          echo "## ♻️ docker-lftp-sync" >> $GITHUB_STEP_SUMMARY
           echo "Successfully built and published Docker container!" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### 📦 Container Details" >> $GITHUB_STEP_SUMMARY
